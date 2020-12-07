@@ -24,7 +24,7 @@ struct ContentView: View {
                 VStack(alignment: .center) {
                     if self.ThePomoshTimer.isActive == true {
                         VStack {
-                            Text(self.ThePomoshTimer.isBreakActive ? "☕️ Break time" : "🔥 X \(self.ThePomoshTimer.round)")
+							Text(self.ThePomoshTimer.isBreakActive ? NSLocalizedString("☕️ Break time", comment: "") : String(format: NSLocalizedString("🔥 X %d", comment: ""), self.ThePomoshTimer.round))
                                 .font(.body)
                                  .foregroundColor(Color.gray)
                             Text("\(self.ThePomoshTimer.textForPlaybackTime(time: TimeInterval(self.ThePomoshTimer.timeRemaining)))")
@@ -104,7 +104,7 @@ struct ContentView: View {
                 VStack {
                     ScrollView {
                         Spacer()
-                        Text("Working Time:  \(self.ThePomoshTimer.fulltime / 60) minute")
+						Text(String(format: NSLocalizedString("Working Time: %d minute", comment: ""), self.ThePomoshTimer.fulltime / 60))
                         .font(Font.system(size: 12).monospacedDigit())
                         .animation(nil)
                         
@@ -122,7 +122,7 @@ struct ContentView: View {
                         
                         
                         
-                        Text("Break Time:  \(self.ThePomoshTimer.fullBreakTime / 60) minute")
+						Text(String(format: NSLocalizedString("Break Time: %d minute", comment:""), self.ThePomoshTimer.fullBreakTime / 60))
                         .font(Font.system(size: 12).monospacedDigit())
                         .animation(nil)
                         
@@ -138,7 +138,7 @@ struct ContentView: View {
                         ) ,in: 300...600, step: 60)
                         
                         
-                        Text("Total cycles in a session")
+						Text(NSLocalizedString("Total cycles in a session", comment: ""))
                         .font(Font.system(size: 12).monospacedDigit())
                         .animation(nil)
                         HStack {
