@@ -61,7 +61,7 @@ struct ContentView: View {
                 .sheet(isPresented: $showingSettings) {
                     VStack(alignment: .leading, spacing: 15.0) {
                         Spacer()
-                        Text("Preferences")
+						Text(NSLocalizedString("Preferences", comment: ""))
                             .foregroundColor(Color("Text"))
                             .font(.custom("Silka Bold", size: 22))
                         
@@ -72,7 +72,8 @@ struct ContentView: View {
                             
                             VStack(alignment: .leading)  {
                                 
-                                Text("Working Time:  \(self.ThePomoshTimer.fulltime / 60) minute")
+                                Text(String(format: NSLocalizedString("Working Time: %d minute", comment: ""),
+											self.ThePomoshTimer.fulltime / 60))
                                     .foregroundColor(Color("Text"))
                                     .font(.custom("Silka Regular", size: 14))
                                 
@@ -90,7 +91,8 @@ struct ContentView: View {
                             
                             
                             VStack(alignment: .leading)  {
-                                Text("Break Time:  \(self.ThePomoshTimer.fullBreakTime / 60) minute")
+                                Text(String(format: NSLocalizedString("Break Time: %d minute", comment: ""),
+											self.ThePomoshTimer.fullBreakTime / 60))
                                     .foregroundColor(Color("Text"))
                                     .font(.custom("Silka Regular", size: 14))
                                 
@@ -108,7 +110,7 @@ struct ContentView: View {
                             
                             
                             VStack(alignment: .leading)  {
-                                Text("Total cycles in a session")
+								Text(NSLocalizedString("Total cycles in a session", comment: ""))
                                     .foregroundColor(Color("Text"))
                                     .font(.custom("Silka Regular", size: 14))
                                     .padding(.bottom, 10.0)
@@ -116,7 +118,7 @@ struct ContentView: View {
                                     
                                     ForEach(0..<self.ThePomoshTimer.fullround, id: \.self) { index in
                                         
-                                        Text("🔥")
+										Text(NSLocalizedString("🔥", comment: ""))
                                         
                                     }
                                 }
@@ -138,13 +140,13 @@ struct ContentView: View {
                             
                             VStack {
                                 Toggle(isOn: self.$ThePomoshTimer.playSound) {
-                                    Text("Sound effects")
+									Text(NSLocalizedString("Sound effects", comment: ""))
                                         .foregroundColor(Color("Text"))
                                         .font(.custom("Silka Regular", size: 14))
                                 }.padding(.vertical, 5.0)
                                 
                                 Toggle(isOn: self.$ThePomoshTimer.showNotifications) {
-                                    Text("Show Notifications")
+									Text(NSLocalizedString("Show Notifications", comment: ""))
                                         .foregroundColor(Color("Text"))
                                         .font(.custom("Silka Regular", size: 14))
                                 }
@@ -228,13 +230,13 @@ struct ContentView: View {
         var bodyString: String  {
             var string = ""
             if self.ThePomoshTimer.isBreakActive == true {
-                string = "Now, It's working time 🔥"
+				string = NSLocalizedString("Now, It's working time 🔥", comment: "")
             } else {
-                string = "It's break time ☕️"
+				string = NSLocalizedString("It's break time ☕️", comment: "")
             }
             return string
         }
-        content.title = "Time is up 🙌"
+		content.title = NSLocalizedString("Time is up 🙌", comment: "")
         content.body = bodyString
         content.badge = 1
         

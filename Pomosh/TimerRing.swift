@@ -50,11 +50,14 @@ struct TimerRing: View {
                 
                 VStack(alignment: .center, spacing: 15){
                     if self.Timer.isActive {
-                        Text(self.Timer.isBreakActive ? "☕️ Break time" : "🔥 X \(self.Timer.round)")
+						Text(self.Timer.isBreakActive ?
+								NSLocalizedString("☕️ Break time", comment: "") :
+								String(format: NSLocalizedString("🔥 X %d", comment: ""), self.Timer.round))
                             .foregroundColor(Color("Text"))
                             .font(.custom("Silka Regular", size: isIpad ? 24 : 16 ))
                     } else {
-                        Text(self.Timer.round > 0 ? self.Timer.isBreakActive ? "Break stopped" : "Start" : "Create New Session")
+						Text(self.Timer.round > 0 ? self.Timer.isBreakActive ? NSLocalizedString("Break stopped", comment: "") :
+								NSLocalizedString("Start", comment: "") : NSLocalizedString("Create New Session", comment: ""))
                             .foregroundColor(Color("Text"))
                             .font(.custom("Silka Regular", size: isIpad ? 24 : 16 ))
                             .onTapGesture {
